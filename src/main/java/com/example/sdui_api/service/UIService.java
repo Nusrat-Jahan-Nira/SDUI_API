@@ -199,7 +199,8 @@ public class UIService {
 
     // Helper method to create a text button UIComponent
     private UIComponent createTextButtonComponent(
-        String label, String actionUrl, String method, String successMessage, String failureMessage) {
+        String label, String actionUrl, String method, 
+        String successMessage, String failureMessage) {
         UIComponent component = new UIComponent();
         component.setType("text_button");
         component.setLabel(label);

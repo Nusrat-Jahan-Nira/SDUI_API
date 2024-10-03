@@ -100,13 +100,130 @@ package com.example.sdui_api.model;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import com.example.sdui_api.model.UIComponent.ActionDetails;
+
+// public class UIComponent {
+//     private String type; // e.g., "text", "button", "dropdown"
+//     private String label; // Display label
+//     private String placeholder; // Placeholder for input fields
+//     private ActionDetails actionDetails; // Details for the action to be taken
+//     private List<String> options; // Options for dropdowns
+
+//     // Getters and Setters
+//     public String getType() {
+//         return type;
+//     }
+
+//     public void setType(String type) {
+//         this.type = type;
+//     }
+
+//     public String getLabel() {
+//         return label;
+//     }
+
+//     public void setLabel(String label) {
+//         this.label = label;
+//     }
+
+//     public String getPlaceholder() {
+//         return placeholder;
+//     }
+
+//     public void setPlaceholder(String placeholder) {
+//         this.placeholder = placeholder;
+//     }
+
+//     public ActionDetails getActionDetails() {
+//         return actionDetails;
+//     }
+
+//     public void setActionDetails(ActionDetails actionDetails) {
+//         this.actionDetails = actionDetails;
+//     }
+
+//     public List<String> getOptions() {
+//         return options;
+//     }
+
+//     public void setOptions(List<String> options) {
+//         this.options = options;
+//     }
+
+//     @Override
+//     public String toString() {
+//         return "UIComponent{" +
+//                 "type='" + type + '\'' +
+//                 ", label='" + label + '\'' +
+//                 ", placeholder='" + placeholder + '\'' +
+//                 ", actionDetails=" + actionDetails +
+//                 ", options=" + options +
+//                 '}';
+//     }
+
+//     // Inner class to hold action details
+//     public static class ActionDetails {
+//         private String url; // API endpoint
+//         private String method; // HTTP method (GET/POST)
+//         private String successMessage; // Message on success
+//         private String errorMessage; // Message on error
+
+//         // Getters and Setters
+//         public String getUrl() {
+//             return url;
+//         }
+
+//         public void setUrl(String url) {
+//             this.url = url;
+//         }
+
+//         public String getMethod() {
+//             return method;
+//         }
+
+//         public void setMethod(String method) {
+//             this.method = method;
+//         }
+
+//         public String getSuccessMessage() {
+//             return successMessage;
+//         }
+
+//         public void setSuccessMessage(String successMessage) {
+//             this.successMessage = successMessage;
+//         }
+
+//         public String getErrorMessage() {
+//             return errorMessage;
+//         }
+
+//         public void setErrorMessage(String errorMessage) {
+//             this.errorMessage = errorMessage;
+//         }
+
+//         @Override
+//         public String toString() {
+//             return "ActionDetails{" +
+//                     "url='" + url + '\'' +
+//                     ", method='" + method + '\'' +
+//                     ", successMessage='" + successMessage + '\'' +
+//                     ", errorMessage='" + errorMessage + '\'' +
+//                     '}';
+//         }
+//     }
+// }
+
 public class UIComponent {
     private String type; // e.g., "text", "button", "dropdown"
     private String label; // Display label
     private String placeholder; // Placeholder for input fields
+    private String value; // Value for the input or selected option
     private ActionDetails actionDetails; // Details for the action to be taken
     private List<String> options; // Options for dropdowns
-
+    private List<UIComponent> children; 
+ 
     // Getters and Setters
     public String getType() {
         return type;
@@ -114,6 +231,14 @@ public class UIComponent {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<UIComponent>  getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<UIComponent>  children) {
+        this.children = children;
     }
 
     public String getLabel() {
@@ -132,6 +257,14 @@ public class UIComponent {
         this.placeholder = placeholder;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public ActionDetails getActionDetails() {
         return actionDetails;
     }
@@ -143,7 +276,13 @@ public class UIComponent {
     public List<String> getOptions() {
         return options;
     }
+    public boolean isLabel() {
+        return "Label".equalsIgnoreCase(type);
+    }
 
+    // public boolean isCard() {
+    //     return "Card".equalsIgnoreCase(type);
+    // }
     public void setOptions(List<String> options) {
         this.options = options;
     }
@@ -154,6 +293,7 @@ public class UIComponent {
                 "type='" + type + '\'' +
                 ", label='" + label + '\'' +
                 ", placeholder='" + placeholder + '\'' +
+                ", value='" + value + '\'' +
                 ", actionDetails=" + actionDetails +
                 ", options=" + options +
                 '}';
@@ -208,5 +348,6 @@ public class UIComponent {
                     ", errorMessage='" + errorMessage + '\'' +
                     '}';
         }
+
     }
 }
